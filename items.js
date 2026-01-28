@@ -1,0 +1,18 @@
+let ITEMS = [
+    { name: "電鍋", price: 20, stock: 1, image: "images/a.png", description: "呱" },
+    { name: "平底鍋", price: 10, stock: 1, image: "images/a.png", description: "瓜" },
+    { name: "吹風機", price: 10, stock: 1, image: "images/a.png", description: "呱瓜" },
+    { name: "置物架", price: 10, stock: 1, image: "images/a.png", description: "呱呱" },
+    { name: "鯊鯊", price: 99999, stock: 1, image: "images/c.jpg", description: "我愛鯊鯊" },
+    { name: "路由器", price: 10, stock: 1, image: "images/a.png", description: "瓜呱" },
+    { name: "濾水壺", price: 10, stock: 1, image: "images/a.png", description: "呱呱呱" },
+    { name: "杯子", price: 10, stock: 1, image: "images/a.png", description: "瓜瓜呱" },
+    { name: "鏡子", price: 10, stock: 1, image: "images/a.png", description: "" },
+    { name: "垃圾桶", price: 10, stock: 1, image: "images/a.png", description: "呱瓜呱" },
+    { name: "檯燈", price: 10, stock: 1, image: "images/a.png", description: "瓜瓜" },
+    { name: "熱水壺", price: 10, stock: 1, image: "images/c.jpg", description: "瓜瓜瓜" }
+];
+
+// 每行一件東西 (名字 價格 數量 圖片路徑 描述)
+// 同名無法區分 (取名要避開)
+// 每行結尾加 , (除了最後一樣不用)

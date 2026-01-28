@@ -5,7 +5,7 @@
 傳送門 👇  
 https://hankliuliu.github.io/Mini-Market/index.html
 
-想用可以自己下載  
+想用可以自己 fork  
 其實只有展示頁面
 
 物品資訊都放 items.js 就好  

@@ -1,16 +1,14 @@
 <!DOCTYPE html>
+
 <html lang="zh-Hant">
-<!-- 超亂ㄏㄏ -->
+<!-- 交換結束來賣東西~~ -->
+
 <head>
     <meta charset="UTF-8">
-    <title>Mini Market</title>
-    <!-- 
-        Cascading Style Sheets
-        階層式樣式表
-        CSS
-    -->
+    <!-- 頁面名 -->
+    <title>Mini-Market</title>
+    <!-- 設定們 -->
     <style>
-        /* CSS 單&多行註解 */
         /* 右上角購物車按鈕 */
         #cart-button {
             position: fixed;
@@ -24,7 +22,7 @@
             border-radius: 5px;
         }
 
-        /* 側邊欄 */
+        /* 購物車側邊欄 */
         #cart-sidebar {
             position: fixed;
             top: 0;
@@ -52,12 +50,7 @@
             cursor: pointer;
         }
 
-        /* 只有加上這個 class 才有動畫 */
-        #cart-sidebar.animate {
-            transition: transform 3s ease;
-        }
-
-        /* ! ! 啥 ! ! */
+        /* 購物車內的項目 */
         .cart-item {
             display: flex;
             justify-content: space-between;
@@ -65,7 +58,7 @@
             margin-bottom: 8px;
         }
 
-        /* ! ! 改成碰到顯示垃圾桶符號 ! ! */
+        /* 刪除項目用 (改成碰到顯示垃圾桶符號?) */
         .cart-item button {
             padding: 2px 4px;
             border-radius: 4px;
@@ -109,7 +102,7 @@
             text-align: center;
         }
 
-        /* 外層商品網格：每排兩個商品 */
+        /* 外層商品網格 */
         .product-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -119,18 +112,17 @@
             margin-top: 20px;
         }
 
-        @media (max-width: 300px) {
+        /* 小螢幕每排兩個 (不知道設多少 似乎沒用) */
+        @media (max-width: 900px) {
             .product-grid {
                 grid-template-columns: repeat(2, 1fr);
-                /* 小螢幕每排兩個 */
-                /* 其實不知道要設多少 */
             }
         }
 
-        @media (max-width: 100px) {
+        /* 更小螢幕每排一個 (不知道設多少 似乎沒用) */
+        @media (max-width: 600px) {
             .product-grid {
                 grid-template-columns: 1fr;
-                /* 更小螢幕每排一個 */
             }
         }
 
@@ -148,7 +140,6 @@
         /* 商品資訊（左側） */
         .product-info {
             flex: 1;
-            /* 佔左側空間 */
         }
 
         /* 圖片區塊（右側） */
@@ -157,6 +148,7 @@
             text-align: center;
         }
 
+        /* 圖片顯示方式 */
         .product-image {
             max-width: 100%;
             height: 150px;
@@ -164,12 +156,13 @@
             border-radius: 5px;
         }
 
+        /* 輸入數量的框框 */
         .product-info input[type="number"] {
             width: 40px;
             height: 25px;
         }
 
-        /* 右上角小按鈕 */
+        /* 這啥 ? */
         .product {
             position: relative;
             /* 讓按鈕可以絕對定位在區塊內 */
@@ -181,7 +174,7 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.151);
         }
 
-        /* 小按鈕 */
+        /* info 按鈕文字 */
         .info-button {
             position: absolute;
             top: 10px;
@@ -197,7 +190,7 @@
             cursor: pointer;
         }
 
-        /* tooltip 文字 */
+        /* info 訊息文字 */
         .tooltip {
             visibility: hidden;
             width: 180px;
@@ -210,14 +203,13 @@
             z-index: 10;
             top: -5px;
             right: 105%;
-            /* 放在按鈕左邊，可以改成想要位置 */
             font-weight: 500;
             font-size: 12px;
             opacity: 0;
             transition: opacity 0.3s;
         }
 
-        /* 滑鼠懸停顯示 tooltip */
+        /* 滑鼠懸停 info 上時顯示 tooltip */
         .info-button:hover .tooltip {
             visibility: visible;
             opacity: 1;
@@ -231,7 +223,7 @@
             cursor: default;
         }
 
-        /* tooltip 文字 */
+        /* 標題 tooltip 文字 */
         .title-tooltip .tooltip-text {
             visibility: hidden;
             width: 100px;
@@ -242,9 +234,6 @@
             padding: 4px 8px;
             position: absolute;
             z-index: 10;
-            /* bottom: -100%;
-            left: 50%;
-            transform: translateX(-50%); */
             /* 數字小往上移 */
             top: -20%;
             /* 數字小往左移 */
@@ -257,72 +246,50 @@
             transition: opacity 0.3s;
         }
 
-        /* 滑鼠懸停顯示 tooltip */
+        /* 滑鼠懸停標題顯示 tooltip */
         .title-tooltip:hover .tooltip-text {
             visibility: visible;
             opacity: 1;
+        }
+
+        /* 庫存已空的標示 */
+        .sold-out {
+            color: rgb(255, 115, 0);
+            font-weight: bold;
         }
     </style>
 </head>
 
 <body>
+    <!-- 標題 -->
     <h1 class="title-tooltip">
         &nbsp;&nbsp;Items for Sale
         <span class="tooltip-text">僅供參考<br>詳情請洽我的鯊鯊</span>
     </h1>
+
+    <!-- 商品區塊們 -->
     <div id="item-list" class="product-grid"></div>
+
     <!-- 右上角購物車按鈕 -->
     <button id="cart-button" onclick="toggleCart()">購物車</button>
-    <!-- 側邊欄購物車 (初始化) -->
+
+    <!-- 購物車初始化 -->
     <div id="cart-sidebar" class="open">
         <button id="close-cart" onclick="toggleCart()">✕</button>
         <h2>購物車</h2>
         <div id="cart-list"></div>
         <p id="cart-total">買點東東啦拜託 (｡･‿･｡)ﾉ ♥</p>
         <button onclick="openCheckout()">結帳</button>
-        <!-- <div id="cart-items"></div> -->
     </div>
-    <!-- 庫存已空的標示格式 -->
-    <style>
-        .sold-out {
-            color: rgb(255, 115, 0);
-            font-weight: bold;
-        }
-    </style>
 
+    <!-- 讀取商品們 -->
+    <script src="items.js"></script>
+
+    <!-- 程式本體 -->
     <script>
-        /*
-            HTML 註解可以跨進 JavaScript
-            但最好不要搞混 HTML 和 JS 的界線
-        */
-        // 初始化商品們~
-        let items = [ //];
-            { name: "電鍋", price: 20, stock: 1, image: "images/a.png", description: "呱" },
-            { name: "平底鍋", price: 10, stock: 1, image: "images/a.png", description: "瓜" },
-            { name: "吹風機", price: 10, stock: 1, image: "images/a.png", description: "呱瓜" },
-            { name: "置物架", price: 10, stock: 1, image: "images/a.png", description: "呱呱" },
-            { name: "鯊鯊", price: 99999, stock: 1, image: "images/c.jpg", description: "我愛鯊鯊" },
-            { name: "路由器", price: 10, stock: 1, image: "images/a.png", description: "瓜呱" },
-            { name: "濾水壺", price: 10, stock: 1, image: "images/a.png", description: "呱呱呱" },
-            { name: "杯子", price: 10, stock: 1, image: "images/a.png", description: "瓜瓜呱" },
-            { name: "鏡子", price: 10, stock: 1, image: "images/a.png", description: "瓜呱呱" },
-            { name: "垃圾桶", price: 10, stock: 1, image: "images/a.png", description: "呱瓜呱" },
-            { name: "檯燈", price: 10, stock: 1, image: "images/a.png", description: "瓜瓜" },
-            { name: "熱水壺", price: 10, stock: 1, image: "images/c.jpg", description: "瓜瓜瓜" }
-        ];
-        // 初始化購物車~
+        // 初始化商品 & 購物車
+        let items = ITEMS;
         let cart = [];
-
-        // // 從後端抓資料
-        // async function fetchItems() {
-        //     try {
-        //         const response = await fetch('http://localhost:3000/api/products');
-        //         items = await response.json(); // JSON 轉成 JS 陣列
-        //         showItems(); // 更新畫面
-        //     } catch (err) {
-        //         console.error("抓取商品資料失敗:", err);
-        //     }
-        // }
 
         // 商品顯示初始化
         function showItems() {
@@ -332,7 +299,7 @@
                 container.innerHTML += `
                     <div class="product">
                         <button class="info-button">ⓘ
-                            <span class="tooltip">${item.description || "這裡是商品簡介"}</span>
+                            <span class="tooltip">${item.description || "物品簡介"}</span>
                         </button>
                         <div class="product-info">
                             <h3>${item.name}</h3>
@@ -352,23 +319,28 @@
                         </div>
                     </div>
                 `;
+
+                // 初始就沒東西 (我自己更新後)
+                let statusInit = document.getElementById(item.name + "-status");
+                if (item.stock <= 0) {
+                    statusInit.innerText = "已售完";
+                    statusInit.classList.add("sold-out");
+                    document.getElementById(item.name + "-button").disabled = true; // 讓按鈕不能再按
+                }
             });
         }
 
-        // 新增訂單
+        // 加入購物車
         function reserveItems(event, itemName) {
             event.preventDefault(); // 防止頁面重整
-            // .find() 找出第一個符合條件的元素
-            // i => callback function 會在 .find() 內部被呼叫多次
-            // === (strict equality) operator checks whether its two operands are equal
-            // .find(true) -> 結束 (return object / undefined)
-            let item = items.find(i => i.name === itemName);
+            let item = items.find(i => i.name === itemName); // 取得第一個同名物品
+            // 多物品同名無法區分 取名要避開
             let qtyInput = document.getElementById(itemName + "-qty"); // 取得輸入的數量
             let qty = Number(qtyInput.value); // 轉成數字
             let cartItem = cart.find(c => c.name === itemName); // 取得購物車狀態
             // 檢查可否操作
             if (!item) return; // undefined
-            if (item.stock === 0) {
+            if (item.stock === 0) { // 理論上初始化就會封印按鈕了
                 document.getElementById(itemName + "-button").disabled = true; // 庫存為 0 時禁用按鈕
             }
             if (qty <= 0 || isNaN(qty)) {
@@ -383,19 +355,13 @@
                 alert("庫存不足 : (\n\n" + "購物車已有: " + cartItem.qty);
                 return;
             }
-            // 扣庫存
-            // item.stock -= qty;
-            // alert(itemName + " 已預訂\n" + "預定數量: " + qty + "\n剩餘庫存: " + item.stock);
-            // 加入購物車
-            // let cartItem = cart.find(c => c.name === itemName);
+            // 輸入合理 可加入
             if (cartItem) {
                 cartItem.qty += qty;
             } else {
                 cart.push({ name: itemName, price: item.price, qty: qty });
             }
             alert(itemName + " * " + qty + " 已加入購物車");
-            // 更新商品 & 購物車狀態
-            // updateStock(itemName);
             updateCart();
         }
 
@@ -420,12 +386,14 @@
             let cartTotal = document.getElementById("cart-total");
             cartList.innerHTML = ""; // 清空舊內容
             let total = 0;
+
             // 購物車是空的
             if (cart.length === 0) {
                 cartTotal.innerText = "😑";
-                cartTotal.className = "empty";
+                cartTotal.className = "empty"; // 放大表情xd
                 return;
             }
+
             // 有東東
             cart.forEach(item => {
                 // 累加金額
@@ -441,25 +409,15 @@
                 `;
             });
             document.getElementById("cart-total").innerText = "總金額: " + total + " €";
-            cartTotal.className = "filled";
+            cartTotal.className = "filled"; // 文字一般大小
         }
 
         // 購物車刪除商品
         function removeFromCart(itemName) {
-            // 找到購物車裡的商品
-            let index = cart.findIndex(c => c.name === itemName);
+            let index = cart.findIndex(c => c.name === itemName); // 找到購物車裡的商品
             if (index === -1) return;
-            // let cartItem = cart[index]; // 取得購物車裡的該商品數量
-            // // 把數量還回庫存
-            // let item = items.find(i => i.name === itemName);
-            // if (item) {
-            //     item.stock += cartItem.qty;
-            // }
-            // 從購物車移除
-            cart.splice(index, 1);
-            // 更新畫面
-            updateCart();
-            // updateStock(itemName);
+            cart.splice(index, 1); // 從購物車移除
+            updateCart(); // 更新畫面
         }
 
         // 側邊欄打開 & 收起來
@@ -468,6 +426,7 @@
             sidebar.classList.toggle("open");
         }
 
+        // 按結帳
         function openCheckout() {
             if (cart.length === 0) {
                 alert("購物車是空的啦 😑");
@@ -476,19 +435,21 @@
             document.getElementById("checkout-overlay").classList.remove("hidden");
         }
 
+        // 取消結帳
         function closeCheckout() {
             document.getElementById("checkout-overlay").classList.add("hidden");
             document.getElementById("customer-name").value = "";
         }
 
+        // 確認結帳
         function confirmCheckout() {
             let name = document.getElementById("customer-name").value.trim();
-
             if (!name) {
                 alert("請輸入名字 🙏");
                 return;
             }
 
+            // tut mir leid, aber das geht nicht
             alert(`謝謝你，${name} !\n\n但我其實沒做這功能\n\n`);
 
             // 扣庫存
@@ -512,60 +473,28 @@
             closeCheckout();
         }
 
-        // 啟動時抓資料
-        // fetchItems();
-
         showItems();
-
-        // // 啟用動畫（只影響之後的變化）
-        // cart.classList.add("animate");
-        // setTimeout(() => {
-        //     cart.classList.toggle("open");
-        // }, 3000); // ms
-
+        // 皮一下 :)
         const panel = document.querySelector('#cart-sidebar');
         setTimeout(() => {
             panel.classList.toggle('open');
         }, 3000);
-
-        // const panel = document.querySelector('#cart-sidebar');
-
-        // // 第一次：特效用 5s
-        // panel.style.transition = 'transform 5s ease';
-
-        // requestAnimationFrame(() => {
-        //     setTimeout(() => {
-        //         panel.classList.toggle('open');
-
-        //         // 收合完成後，恢復一般速度
-        //         setTimeout(() => {
-        //             panel.style.transition = 'transform 0.5s ease';
-        //         }, 5000);
-
-        //     }, 3000); // 3 秒後開始收合
-        // });
-
     </script>
 
     <!-- 結帳遮罩 -->
     <div id="checkout-overlay" class="hidden">
         <div id="checkout-modal">
             <h2>結帳</h2>
-
-            <label>
-                你的名字：
-                <input type="text" id="customer-name" required>
-            </label>
-
-            <br><br>
-
-            <button onclick="confirmCheckout()">確認結帳</button>
-            <button onclick="closeCheckout()">取消</button>
+            <label>你的名字： <input type="text" id="customer-name" required></label>
+            <div class="checkout-buttons">
+                <br><br>
+                <button onclick="confirmCheckout()">確認</button>
+                &nbsp;&nbsp;&nbsp;
+                <button onclick="closeCheckout()">取消</button>
+            </div>
         </div>
     </div>
 </body>
 
 </html>
-
 <!-- 越寫越亂ㄏㄏ -->
-

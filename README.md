@@ -2,7 +2,7 @@
 交換結束準備來賣東東啦～  
 之後整理完再來更新物品 : )
 
-傳送門 👇 (其實只有展示頁面)  
+傳送門 👇 (其實只有展示頁面) (用電腦看比較舒服)  
 https://hankliuliu.github.io/Mini-Market/index.html
 
 想用可以直接 fork 過去  

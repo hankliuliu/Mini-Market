@@ -40,7 +40,7 @@
         /* 購物車角落提醒文字定位 */
         #cart-note {
             position: absolute;
-            /* 與邊界距離 */
+            /* 與該邊界距離 */
             right: 20px;
             bottom: 40px;
             font-size: 0.9rem;
@@ -229,11 +229,8 @@
             padding: 4px 8px;
             position: absolute;
             z-index: 10;
-            /* 數字小往上移 */
             top: -20%;
-            /* 數字小往左移 */
             left: 120%;
-            /* 小間距，避免貼齊 */
             margin-left: 5px;
             margin-top: 5px;
             font-size: 12px;
@@ -283,7 +280,7 @@
     <div id="checkout-overlay" class="hidden">
         <!-- 訊息畫面 -->
         <div id="checkout-modal">
-            <h2>送出預訂</h2>
+            <h2>確認預訂</h2>
             <!-- Web3Forms 寄 email -->
             <form id="order-form" action="https://api.web3forms.com/submit" method="POST">
                 <!-- 必要欄位 -->
@@ -465,7 +462,6 @@
         // 取消預訂
         function closeCheckout() {
             document.getElementById("checkout-overlay").classList.add("hidden");
-            document.getElementById("customer-name").value = "";
         }
 
         // 頁面展示初始化
@@ -477,8 +473,12 @@
             panel.classList.toggle('open');
         }, 3000);
 
-        // 送出預訂時取得資料 
+        // 送出預訂時 
         document.getElementById("order-form").addEventListener("submit", function () {
+            // 關掉確認訊息, 更新購物車標題 
+            document.getElementById("checkout-overlay").classList.add("hidden");
+            document.querySelector("#cart-sidebar h2").innerText = "預訂已送出 ✅";
+
             // 抓物品們, 避開按鈕文字
             let cartSpans = document.querySelectorAll("#cart-list .cart-item span");
             let cartContents = Array.from(cartSpans).map(s => s.innerText).join("\n");

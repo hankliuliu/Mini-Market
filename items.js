@@ -6,7 +6,7 @@ let ITEMS = [
     { name: "平底鍋", price: 10, stock: 1, image: "", description: "" },
     { name: "吹風機", price: 10, stock: 1, image: "images/a.png", description: "呱瓜" },
     { name: "置物架", price: 10, stock: 1, image: "images/a.png", description: "呱呱" },
-    { name: "鯊鯊", price: 99999, stock: 1, image: "images/c.jpg", description: "我愛鯊鯊" },
+    { name: "鯊鯊", price: 99999, stock: -1, image: "images/c.jpg", description: "我愛鯊鯊" },
     { name: "路由器", price: 10, stock: 1, image: "images/a.png", description: "瓜呱" },
     { name: "濾水壺", price: 10, stock: 1, image: "images/a.png", description: "呱呱呱" },
     { name: "杯子", price: 10, stock: 1, image: "images/a.png", description: "瓜瓜呱" },
@@ -23,3 +23,4 @@ const myKey = "b5d75dd5-63b4-44df-b2b6-be85824c42dc";
 //    (隨便取名沒差)
 //    (domain name 填 localhost 就好)
 // 3. 就會拿到 Form Access Key 了
+

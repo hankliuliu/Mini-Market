@@ -2,11 +2,11 @@
 交換結束準備來賣東東啦～  
 之後整理完再來更新物品 : )
 
-傳送門 👇 (其實只有展示頁面) (用電腦看比較舒服)  
+傳送門 👇 (用電腦看比較舒服)  
 https://hankliuliu.github.io/Mini-Market/index.html
 
 想用可以直接 fork 過去  
 然後啟用 GitHub Pages
 
-物品資訊都放 items.js 就好  
-圖片放到 images 資料夾裡
+物品圖片都放到 images 資料夾
+資訊設定都放到 items.js 就好

@@ -1,6 +1,6 @@
-// 每行一件東西 (名字, 價格. 數量. 圖片路徑. 描述)
-// 同名無法區分 (取名要避開)          └───────┴──── 可以空著 ("")
-// 每行結尾加 , (除了最後一樣不用)
+// 每行一件東西　(名字, 價格. 數量. 圖片路徑. 描述)
+// 同名無法區分　(取名要避開)　 　　　　　　└───────┴──── 可以空著 ("")
+// 每行結尾加 ,　(除了最後一樣不用)
 let ITEMS = [
     { name: "電鍋", price: 20, stock: 1, image: "images/a.png", description: "呱" },
     { name: "平底鍋", price: 10, stock: 1, image: "", description: "" },
@@ -20,6 +20,7 @@ let ITEMS = [
 const myKey = "b5d75dd5-63b4-44df-b2b6-be85824c42dc";
 // 1. https://web3forms.com 註冊
 // 2. 建立一個 form
-//    (隨便取名沒差)
-//    (domain name 填 localhost 就好)
+// 　　(隨便取名沒差)
+// 　　(domain name 填 localhost 就好)
 // 3. 就會拿到 Form Access Key 了
+

@@ -9,4 +9,4 @@ https://hankliuliu.github.io/Mini-Market/index.html
 然後啟用 GitHub Pages
 
 物品圖片都放到 images 資料夾  
-資訊設定都放到 items.js 就好
+資訊設定都放到 items.js 就好了

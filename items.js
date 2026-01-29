@@ -16,13 +16,9 @@ let ITEMS = [
     { name: "熱水壺", price: 10, stock: 1, image: "images/c.jpg", description: "瓜瓜瓜" }
 ];
 
-// 你的　Web3Forms Key
-const myKey = "b5d75dd5-63b4-44df-b2b6-be85824c42dc";
 // 1. https://web3forms.com 註冊
 // 2. 建立一個 form
 // 　　(隨便取名沒差)
 // 　　(domain name 填 localhost 就好)
-// 3. 就會拿到 Form Access Key 了
-
-
-
+// 3. 就會拿到 Form Access Key 了 -> 填到底下
+const myKey = "b5d75dd5-63b4-44df-b2b6-be85824c42dc";

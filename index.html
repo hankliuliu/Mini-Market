@@ -481,7 +481,7 @@
 
             // 抓物品們, 避開按鈕文字
             let cartSpans = document.querySelectorAll("#cart-list .cart-item span");
-            let cartContents = Array.from(cartSpans).map(s => s.innerText).join("\n");
+            let cartContents = Array.from(cartSpans).map(s => s.innerText.replace("➜", "=")).join("\n");
             document.getElementById("cart-items-input").value = cartContents || "（購物車是空的）";
 
             // 抓總金額, 移除 "總金額: "
@@ -498,3 +498,4 @@
 </html>
 
 <!-- 越寫越亂ㄏㄏ -->
+

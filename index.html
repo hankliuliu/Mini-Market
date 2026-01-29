@@ -22,7 +22,7 @@
             border-radius: 5px;
         }
 
-        /* 購物車側邊欄 */
+        /* 側邊欄購物車畫面 */
         #cart-sidebar {
             position: fixed;
             top: 0;
@@ -32,9 +32,21 @@
             background: #bfbebe;
             box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
             padding: 20px;
-            /* 把它整個往右移動 100% 寬度 (初始隱藏) */
+            /* 把它整個往右移動 100% 寬度 */
             transform: translateX(100%);
             transition: transform 0.5s ease;
+        }
+
+        /* 購物車角落提醒文字定位 */
+        #cart-note {
+            position: absolute;
+            /* 與邊界距離 */
+            right: 20px;
+            bottom: 40px;
+            font-size: 0.9rem;
+            color: #555;
+            /* 不阻擋點擊 */
+            pointer-events: none;
         }
 
         /* 側邊欄開啟時 */
@@ -88,7 +100,7 @@
             z-index: 999;
         }
 
-        /* 隱藏用 */
+        /* 結帳隱藏用 */
         #checkout-overlay.hidden {
             display: none;
         }
@@ -102,28 +114,12 @@
             text-align: center;
         }
 
-        /* 外層商品網格 */
+        /* 外層商品網格 (每排幾件) */
         .product-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            /* 每排 3 件商品 */
             gap: 20px;
-            /* 商品間距 */
             margin-top: 20px;
-        }
-
-        /* 小螢幕每排兩個 (不知道設多少 似乎沒用) */
-        @media (max-width: 900px) {
-            .product-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        /* 更小螢幕每排一個 (不知道設多少 似乎沒用) */
-        @media (max-width: 600px) {
-            .product-grid {
-                grid-template-columns: 1fr;
-            }
         }
 
         /* 商品區塊組成 */
@@ -165,7 +161,6 @@
         /* 這啥 ? */
         .product {
             position: relative;
-            /* 讓按鈕可以絕對定位在區塊內 */
             display: flex;
             align-items: center;
             background: #f5f5f5;
@@ -261,6 +256,7 @@
 </head>
 
 <body>
+    <!-- 由上往下解析 -> 先建立 DOM, 後面的 script 才讀得到 -->
     <!-- 標題 -->
     <h1 class="title-tooltip">
         &nbsp;&nbsp;Items for Sale
@@ -270,19 +266,50 @@
     <!-- 商品區塊們 -->
     <div id="item-list" class="product-grid"></div>
 
-    <!-- 右上角購物車按鈕 -->
+    <!-- 購物車按鈕 -->
     <button id="cart-button" onclick="toggleCart()">購物車</button>
 
-    <!-- 購物車初始化 -->
+    <!-- 購物車畫面 (初始化) -->
     <div id="cart-sidebar" class="open">
         <button id="close-cart" onclick="toggleCart()">✕</button>
         <h2>購物車</h2>
         <div id="cart-list"></div>
         <p id="cart-total">買點東東啦拜託 (｡･‿･｡)ﾉ ♥</p>
-        <button onclick="openCheckout()">結帳</button>
+        <button onclick="openCheckout()">預訂</button>
+        <p id="cart-note">預訂前請幫忙截圖 ～</p>
     </div>
 
-    <!-- 讀取商品們 -->
+    <!-- 預訂畫面 -->
+    <div id="checkout-overlay" class="hidden">
+        <!-- 訊息畫面 -->
+        <div id="checkout-modal">
+            <h2>送出預訂</h2>
+            <!-- Web3Forms 寄 email -->
+            <form id="order-form" action="https://api.web3forms.com/submit" method="POST">
+                <!-- 必要欄位 -->
+                <input type="hidden" name="access_key" id="access-key-input">
+
+                <!-- User 填資料(請先截圖購物車畫面) -->
+                <label>姓名: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="name" placeholder=" blåhaj"
+                        required></label>
+                <br><br>
+                <label>Line ID: &nbsp;<input type="text" name="Line ID" placeholder=" (之後聯絡用)" required></label>
+                <br><br><br>
+
+                <!-- 購物車資料 -->
+                <input type="hidden" name="cart_items" id="cart-items-input">
+                <input type="hidden" name="total_amount" id="cart-total-input">
+
+                <!-- 按鈕 -->
+                <button type="submit">送出訂單</button>
+                &nbsp;&nbsp;&nbsp;
+                <button type="button" onclick="closeCheckout()">取消</button>
+                <br><br>
+            </form>
+        </div>
+    </div>
+
+    <!-- 讀取設定資料 (商品們 & Key) -->
     <script src="items.js"></script>
 
     <!-- 程式本體 -->
@@ -315,7 +342,7 @@
                             </form>
                         </div>
                         <div class="product-image-wrapper">
-                            <img src="${item.image}" alt="${item.name}" class="product-image">
+                            <img src="${item.image || "images/a.png"}" alt="${item.name}" class="product-image">
                         </div>
                     </div>
                 `;
@@ -426,7 +453,7 @@
             sidebar.classList.toggle("open");
         }
 
-        // 按結帳
+        // 按預訂
         function openCheckout() {
             if (cart.length === 0) {
                 alert("購物車是空的啦 😑");
@@ -435,66 +462,39 @@
             document.getElementById("checkout-overlay").classList.remove("hidden");
         }
 
-        // 取消結帳
+        // 取消預訂
         function closeCheckout() {
             document.getElementById("checkout-overlay").classList.add("hidden");
             document.getElementById("customer-name").value = "";
         }
 
-        // 確認結帳
-        function confirmCheckout() {
-            let name = document.getElementById("customer-name").value.trim();
-            if (!name) {
-                alert("請輸入名字 🙏");
-                return;
-            }
-
-            // tut mir leid, aber das geht nicht
-            alert(`謝謝你，${name} !\n\n但我其實沒做這功能\n\n`);
-
-            // 扣庫存
-            cart.forEach(cartItem => {
-                let item = items.find(i => i.name === cartItem.name);
-                if (item) {
-                    item.stock -= cartItem.qty;
-                    updateStock(item.name);
-                }
-            });
-
-            // 清空購物車 & 更改顯示
-            cart = [];
-            let cartList = document.getElementById("cart-list");
-            let cartTotal = document.getElementById("cart-total");
-            cartList.innerHTML = ""; // 清空舊內容
-            cartTotal.innerText = "😋";
-            cartTotal.className = "empty";
-
-            // 關閉視窗
-            closeCheckout();
-        }
-
+        // 頁面展示初始化
         showItems();
+
         // 皮一下 :)
-        const panel = document.querySelector('#cart-sidebar');
+        let panel = document.querySelector('#cart-sidebar');
         setTimeout(() => {
             panel.classList.toggle('open');
         }, 3000);
-    </script>
 
-    <!-- 結帳遮罩 -->
-    <div id="checkout-overlay" class="hidden">
-        <div id="checkout-modal">
-            <h2>結帳</h2>
-            <label>你的名字： <input type="text" id="customer-name" required></label>
-            <div class="checkout-buttons">
-                <br><br>
-                <button onclick="confirmCheckout()">確認</button>
-                &nbsp;&nbsp;&nbsp;
-                <button onclick="closeCheckout()">取消</button>
-            </div>
-        </div>
-    </div>
+        // 送出預訂時取得資料 
+        document.getElementById("order-form").addEventListener("submit", function () {
+            // 抓物品們, 避開按鈕文字
+            let cartSpans = document.querySelectorAll("#cart-list .cart-item span");
+            let cartContents = Array.from(cartSpans).map(s => s.innerText).join("\n");
+            document.getElementById("cart-items-input").value = cartContents || "（購物車是空的）";
+
+            // 抓總金額, 移除 "總金額: "
+            let cartTotal = document.getElementById("cart-total").innerText;
+            let totalValue = cartTotal.replace("總金額: ", "").trim();
+            document.getElementById("cart-total-input").value = totalValue || "0 €";
+
+            // 設定 access_key
+            document.getElementById("access-key-input").value = myKey;
+        });
+    </script>
 </body>
 
 </html>
+
 <!-- 越寫越亂ㄏㄏ -->

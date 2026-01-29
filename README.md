@@ -1,9 +1,12 @@
 # Mini-Market
 交換結束準備來賣東東啦～  
-之後整理完再來更新物品 : )
+整理完之後再來更新物品 : )
 
 傳送門 👇 (用電腦看比較舒服)  
 https://hankliuliu.github.io/Mini-Market/index.html
+
+訂單將依提交時間聯絡確認  
+➜ 存貨資料採非同步更新
 
 想用可以直接 fork 過去  
 然後啟用 GitHub Pages

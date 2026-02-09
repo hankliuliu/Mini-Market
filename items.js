@@ -4,16 +4,16 @@
 // 描述換行: <br>
 let ITEMS = [
     // 廚房相關
-    { name: "1. 濾水壺 + 濾心x1", price: 16, stock: 1, image: "images/default.png", description: "Brita, 盒子淹水泡爛丟了<br>去年九月才買的<br>濾心未拆封 (記得一個大概五歐)" },
+    { name: "1. 濾水壺", price: 11, stock: 1, image: "images/default.png", description: "Brita, 盒子淹水泡爛丟了<br>去年九月才買的" },
     { name: "2. 熱水壺", price: 6, stock: 1, image: "images/default.png", description: "底座、壺, 去年十月才買, 不是很常用" },
     { name: "3. 電鍋(1L)", price: 20, stock: 1, image: "images/default.png", description: "掙扎一個多月還是買了 :)<br>電鍋本體(非外鍋, 不可加水)、<br>鍋子(水只能加這邊)、<br>鍋蓋、量杯、勺子" },
-    { name: "4. 湯鍋 + 鍋蓋", price: 4, stock: 1, image: "images/default.png", description: "直徑 20cm" },
-    { name: "5. 平底鍋 + 鍋蓋", price: 6, stock: 1, image: "images/default.png", description: "上上週剛買的, 直徑 28cm" },
+    { name: "4. 湯鍋 + 鍋蓋", price: 4, stock: 0, image: "images/default.png", description: "直徑 20cm" },
+    { name: "5. 平底鍋 + 鍋蓋", price: 6, stock: 0, image: "images/default.png", description: "上上週剛買的, 直徑 28cm" },
     { name: "6. 鍋蓋", price: 1.5, stock: 1, image: "images/default.png", description: "直徑 24cm<br>(對應的鍋子suck, 丟掉了)" },
-    { name: "7. 鍋子隔熱墊(咖啡)", price: 0.25, stock: 2, image: "images/default.png", description: "軟木材質, 狀態良好<br>公用的通常都燒焦超噁" },
+    { name: "7. 鍋子隔熱墊(咖啡)", price: 0.25, stock: 1, image: "images/default.png", description: "軟木材質, 狀態良好<br>公用的通常都燒焦超噁" },
     { name: "8. 鍋子隔熱墊(灰)", price: 0.35, stock: 1, image: "images/default.png", description: "塑膠" },
-    { name: "9. 湯勺", price: 1, stock: 1, image: "images/default.png", description: "金屬" },
-    { name: "10. 砧板(大)", price: 3, stock: 1, image: "images/default.png", description: "木" },
+    { name: "9. 湯勺", price: 1, stock: 0, image: "images/default.png", description: "金屬" },
+    { name: "10. 砧板(大)", price: 3, stock: 0, image: "images/default.png", description: "木" },
     { name: "11. 砧板(小)", price: 1, stock: 1, image: "images/default.png", description: "塑膠" },
     { name: "12. 中式菜刀", price: 4, stock: 1, image: "images/default.png", description: "" },
     { name: "13. 廚房剪刀", price: 3, stock: 1, image: "images/default.png", description: "(沒有很常用)" },
@@ -22,12 +22,12 @@ let ITEMS = [
     { name: "16. 鐵碗(中)", price: 1, stock: 1, image: "images/default.png", description: "薄, 不隔熱, 可蒸東西用" },
     { name: "17. 玻璃碗(小)", price: 0.5, stock: 1, image: "images/default.png", description: "厚" },
     { name: "18. 飯碗(白)", price: 0.5, stock: 1, image: "images/default.png", description: "厚" },
-    { name: "19. 大盤子", price: 1, stock: 1, image: "images/default.png", description: "" },
-    { name: "20. 玻璃杯(無握把)", price: 0.7, stock: 1, image: "images/default.png", description: "" },
-    { name: "21. 玻璃杯(有握把)", price: 0.7, stock: 1, image: "images/default.png", description: "" },
+    { name: "19. 大盤子", price: 1, stock: 0, image: "images/default.png", description: "" },
+    { name: "20. 玻璃杯(無握把)", price: 0.7, stock: 0, image: "images/default.png", description: "" },
+    { name: "21. 玻璃杯(有握把)", price: 0.7, stock: 0, image: "images/default.png", description: "" },
     { name: "22. 塑膠杯(灰)", price: 0.4, stock: 1, image: "images/default.png", description: "480 ml" },
-    { name: "23. 塑膠杯(白)", price: 0.4, stock: 1, image: "images/default.png", description: "480 ml" },
-    { name: "24. 保鮮盒(白)", price: 2, stock: 1, image: "images/default.png", description: "" },
+    { name: "23. 塑膠杯(白)", price: 0.4, stock: 0, image: "images/default.png", description: "480 ml" },
+    { name: "24. 保鮮盒(白)", price: 2, stock: 0, image: "images/default.png", description: "" },
     { name: "25. 大盒子(淺藍)", price: 1.3, stock: 1, image: "images/default.png", description: "比淺灰的小一點" },
     { name: "26. 大盒子(淺灰)", price: 1.5, stock: 1, image: "images/default.png", description: "比淺藍的大一點" },
     { name: "27. 小盒子(淺灰)", price: 0.75, stock: 1, image: "images/default.png", description: "14x14 cm" },
@@ -51,8 +51,8 @@ let ITEMS = [
     { name: "43. 打算去冰島的鞋子 買來總共只穿出去一天 因為生病行程取消嗚嗚", price: 35, stock: 1, image: "images/default.png", description: "保暖 防水 抓地力<br>想去冰島的話一般鞋子不太行~<br>嗚嗚嗚嗚嗚商品訊息連結在這<br>https://www.decathlon.de/p/wanderschuhe-herren-halbhoch-warm-wasserdicht-nh500-braun/307054/c392c392m8928701" },
     { name: "44. 置物架(大)", price: 6.5, stock: 1, image: "images/default.png", description: "3層, 每層可承重 25kg<br>整體 30x60x100 cm" },
     { name: "45. 置物架(小)", price: 2, stock: 1, image: "images/default.png", description: "3層, 不大<br>路由器的家, 蠻剛好的xd" },
-    { name: "46. 收納盒", price: 1, stock: 1, image: "images/default.png", description: "約 17x25x14 cm" },
-    { name: "47. 遮光窗簾 x1.5", price: 6, stock: 1, image: "images/default.png", description: ".5 是有原因的 :)<br>完整的那個全新未拆封<br>這裡窗戶超大 而且常常不附窗簾<br>前面運動區設施剛好朝著我房間超尷尬:)" },
+    { name: "46. 收納盒", price: 1, stock: 0, image: "images/default.png", description: "約 17x25x14 cm" },
+    { name: "47. 遮光窗簾 x1.5", price: 6, stock: 0, image: "images/default.png", description: ".5 是有原因的 :)<br>完整的那個全新未拆封<br>這裡窗戶超大 而且常常不附窗簾<br>前面運動區設施剛好朝著我房間超尷尬:)" },
     { name: "48. 垃圾桶(含蓋子)", price: 1.5, stock: 1, image: "images/default.png", description: "蓋子可分離" },
     { name: "49. 鏡子", price: 1, stock: 1, image: "images/default.png", description: "15x20 cm, 角度固定" },
     { name: "50. 小剪刀", price: 0.15, stock: 2, image: "images/default.png", description: "不要剪結凍的肉 : )<br>大把的被我炸掉了" },
@@ -67,11 +67,11 @@ let ITEMS = [
     { name: "58. 椅墊", price: 1, stock: 1, image: "images/default.png", description: "扁" },
     { name: "59. 毯毯", price: 5, stock: 1, image: "images/default.png", description: "有暖氣的世界 四季皆能蓋" },
     { name: "60. 床包", price: 1, stock: 1, image: "images/default.png", description: "這裡沒附 有包就好<br>床墊弄髒要罰錢錢" },
-    { name: "61. 瑜珈墊", price: 5, stock: 1, image: "images/default.png", description: "" },
+    { name: "61. 瑜珈墊", price: 5, stock: 0, image: "images/default.png", description: "" },
     { name: "62. 晾衣夾架", price: 1.5, stock: 1, image: "images/default.png", description: "8個夾子" },
-    { name: "63. 衣架(小) x8", price: 0.85, stock: 1, image: "images/default.png", description: "稍小 小件衣物可用" },
-    { name: "64. 衣架(大, 黑) x5", price: 0.75, stock: 1, image: "images/default.png", description: "" },
-    { name: "65. 衣架(大, 灰) x10", price: 1.5, stock: 1, image: "images/default.png", description: "全新" },
+    { name: "63. 衣架(小) x8", price: 0.85, stock: 0, image: "images/default.png", description: "稍小 小件衣物可用" },
+    { name: "64. 衣架(大, 黑) x5", price: 0.75, stock: 0, image: "images/default.png", description: "" },
+    { name: "65. 衣架(大, 灰) x10", price: 1.5, stock: 0, image: "images/default.png", description: "全新" },
     { name: "66. 夾子 x5", price: 0.2, stock: 1, image: "images/default.png", description: "夾住衣架上的衣服" }
 ];
 
@@ -81,5 +81,6 @@ let ITEMS = [
 // 　　(domain name 填 localhost 就好)
 // 3. 就會拿到 Form Access Key 了 -> 填到底下
 const myKey = "b5d75dd5-63b4-44df-b2b6-be85824c42dc";
+
 
 

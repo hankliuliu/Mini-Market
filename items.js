@@ -48,7 +48,7 @@ let ITEMS = [
     { name: "41. 延長線(無開關)", price: 2, stock: 2, image: "images/default.png", description: "3孔" },
     { name: "42. 延長線(有開關)", price: 2, stock: 1, image: "images/default.png", description: "3孔, 全開/全關" },
     // 其他雜物
-    { name: "43. 打算去冰島的鞋子 買來總共只穿出去一天 因為生病行程取消嗚嗚", price: 35, stock: 1, image: "images/default.png", description: "保暖 防水 抓地力<br>想去冰島的話一般鞋子不太行~<br>嗚嗚嗚嗚嗚商品訊息連結在這<br>https://www.decathlon.de/p/wanderschuhe-herren-halbhoch-warm-wasserdicht-nh500-braun/307054/c392c392m8928701" },
+    { name: "43. 打算去冰島的鞋子 買來總共只穿出去一天 因為生病行程取消嗚嗚 https://www.decathlon.de/p/wanderschuhe-herren-halbhoch-warm-wasserdicht-nh500-braun/307054/c392c392m8928701", price: 35, stock: 1, image: "images/default.png", description: "保暖 防水 抓地力<br>想去冰島的話一般鞋子不太行~<br>嗚嗚嗚嗚嗚" },
     { name: "44. 置物架(大)", price: 6.5, stock: 1, image: "images/default.png", description: "3層, 每層可承重 25kg<br>整體 30x60x100 cm" },
     { name: "45. 置物架(小)", price: 2, stock: 1, image: "images/default.png", description: "3層, 不大<br>路由器的家, 蠻剛好的xd" },
     { name: "46. 收納盒", price: 1, stock: 0, image: "images/default.png", description: "約 17x25x14 cm" },
@@ -81,6 +81,7 @@ let ITEMS = [
 // 　　(domain name 填 localhost 就好)
 // 3. 就會拿到 Form Access Key 了 -> 填到底下
 const myKey = "b5d75dd5-63b4-44df-b2b6-be85824c42dc";
+
 
 
 

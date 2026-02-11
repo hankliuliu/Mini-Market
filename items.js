@@ -59,7 +59,7 @@ let ITEMS = [
     { name: "51. 掛勾架", price: 1, stock: 1, image: "images/default.png", description: "6個鉤, 我掛衣櫃門上" },
     { name: "52. 桌球拍 x2 + 球 x4", price: 99, stock: 1, image: "images/default.png", description: "共同持有, 價格待定<br>有些宿舍區有桌球桌" },
     { name: "53. 拖把(兼關燈棍棍)", price: 0.1, stock: 1, image: "images/default.png", description: "我都拆開當棍子關燈" },
-    { name: "54. 德文課本 + 文法書", price: 30, stock: 1, image: "images/default.png", description: "認真學習~~" },
+    { name: "54. 德文課本 + 文法書", price: 30, stock: 0, image: "images/default.png", description: "認真學習~~" },
     // 睡覺和衣物
     { name: "55. 小鯊鯊", price: 99999, stock: 1, image: "images/blahaj.jpg", description: "我愛鯊鯊" },
     { name: "56. 大枕頭", price: 6, stock: 1, image: "images/default.png", description: "ikea" },
@@ -72,7 +72,8 @@ let ITEMS = [
     { name: "63. 衣架(小) x8", price: 0.85, stock: 0, image: "images/default.png", description: "稍小 小件衣物可用" },
     { name: "64. 衣架(大, 黑) x5", price: 0.75, stock: 0, image: "images/default.png", description: "" },
     { name: "65. 衣架(大, 灰) x10", price: 1.5, stock: 0, image: "images/default.png", description: "全新" },
-    { name: "66. 夾子 x5", price: 0.2, stock: 1, image: "images/default.png", description: "夾住衣架上的衣服" }
+    { name: "66. 夾子 x5", price: 0.2, stock: 1, image: "images/default.png", description: "夾住衣架上的衣服" },
+    { name: "67. 時鐘", price: 1.5, stock: 1, image: "images/default.png", description: "不是很小的" }
 ];
 
 // 1. https://web3forms.com 註冊
@@ -81,6 +82,7 @@ let ITEMS = [
 // 　　(domain name 填 localhost 就好)
 // 3. 就會拿到 Form Access Key 了 -> 填到底下
 const myKey = "b5d75dd5-63b4-44df-b2b6-be85824c42dc";
+
 
 
 

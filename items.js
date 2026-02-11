@@ -4,24 +4,24 @@
 // 描述換行: <br>
 let ITEMS = [
     // 廚房相關
-    { name: "1. 濾水壺", price: 11, stock: 1, image: "images/default.png", description: "Brita, 盒子淹水泡爛丟了<br>去年九月才買的" },
-    { name: "2. 熱水壺", price: 6, stock: 1, image: "images/default.png", description: "底座、壺, 去年十月才買, 不是很常用" },
-    { name: "3. 電鍋(1L)", price: 20, stock: 1, image: "images/default.png", description: "掙扎一個多月還是買了 :)<br>電鍋本體(非外鍋, 不可加水)、<br>鍋子(水只能加這邊)、<br>鍋蓋、量杯、勺子" },
+    { name: "1. 濾水壺", price: 11, stock: 1, image: "images/default.png", description: "Brita, 盒子淹水泡爛丟了<br>去年九月才買的<br>原價28 特價的時候可能有八折左右吧" },
+    { name: "2. 熱水壺", price: 5, stock: 1, image: "images/default.png", description: "底座、壺, 去年十月才買, 不是很常用" },
+    { name: "3. 電鍋(1L)", price: 18, stock: 1, image: "images/default.png", description: "掙扎一個多月還是買了 :)<br>電鍋本體(非外鍋, 不可加水)、<br>鍋子(水只能加這邊)、<br>鍋蓋、量杯、勺子" },
     { name: "4. 湯鍋 + 鍋蓋", price: 4, stock: 0, image: "images/default.png", description: "直徑 20cm" },
     { name: "5. 平底鍋 + 鍋蓋", price: 6, stock: 0, image: "images/default.png", description: "上上週剛買的, 直徑 28cm" },
     { name: "6. 鍋蓋", price: 1.5, stock: 1, image: "images/default.png", description: "直徑 24cm<br>(對應的鍋子suck, 丟掉了)" },
     { name: "7. 鍋子隔熱墊(咖啡)", price: 0.25, stock: 1, image: "images/default.png", description: "軟木材質, 狀態良好<br>公用的通常都燒焦超噁" },
-    { name: "8. 鍋子隔熱墊(灰)", price: 0.35, stock: 1, image: "images/default.png", description: "塑膠" },
+    { name: "8. 鍋子隔熱墊(灰)", price: 0.30, stock: 1, image: "images/default.png", description: "塑膠" },
     { name: "9. 湯勺", price: 1, stock: 0, image: "images/default.png", description: "金屬" },
     { name: "10. 砧板(大)", price: 3, stock: 0, image: "images/default.png", description: "木" },
     { name: "11. 砧板(小)", price: 1, stock: 1, image: "images/default.png", description: "塑膠" },
     { name: "12. 中式菜刀", price: 4, stock: 1, image: "images/default.png", description: "" },
-    { name: "13. 廚房剪刀", price: 3, stock: 1, image: "images/default.png", description: "(沒有很常用)" },
-    { name: "14. 刨絲板(一組)", price: 1.75, stock: 1, image: "images/default.png", description: "孔徑大中小各一" },
-    { name: "15. 玻璃碗(大)", price: 1.5, stock: 1, image: "images/default.png", description: "厚" },
-    { name: "16. 鐵碗(中)", price: 1, stock: 1, image: "images/default.png", description: "薄, 不隔熱, 可蒸東西用" },
-    { name: "17. 玻璃碗(小)", price: 0.5, stock: 1, image: "images/default.png", description: "厚" },
-    { name: "18. 飯碗(白)", price: 0.5, stock: 1, image: "images/default.png", description: "厚" },
+    { name: "13. 廚房剪刀", price: 2.5, stock: 1, image: "images/default.png", description: "(沒有很常用)" },
+    { name: "14. 刨絲板(一組)", price: 1.5, stock: 1, image: "images/default.png", description: "孔徑大中小各一" },
+    { name: "15. 玻璃碗(大)", price: 1.25, stock: 1, image: "images/default.png", description: "厚" },
+    { name: "16. 鐵碗(中)", price: 0.75, stock: 1, image: "images/default.png", description: "薄, 不隔熱, 可蒸東西用" },
+    { name: "17. 玻璃碗(小)", price: 0.4, stock: 1, image: "images/default.png", description: "厚" },
+    { name: "18. 飯碗(白)", price: 0.4, stock: 1, image: "images/default.png", description: "厚" },
     { name: "19. 大盤子", price: 1, stock: 0, image: "images/default.png", description: "" },
     { name: "20. 玻璃杯(無握把)", price: 0.7, stock: 0, image: "images/default.png", description: "" },
     { name: "21. 玻璃杯(有握把)", price: 0.7, stock: 0, image: "images/default.png", description: "" },
@@ -42,7 +42,7 @@ let ITEMS = [
     { name: "36. 蒸架(小)", price: 0.3, stock: 1, image: "images/default.png", description: "小的, 英國買的<br>但我電鍋小 -> 上方空間小<br>(德國看到的都更大)" },
     // 房間電器
     { name: "37. 電風扇", price: 12, stock: 1, image: "images/default.png", description: "夏天會很熱<br>九月還有用到" },
-    { name: "38. 可充電檯燈 + 兩種燈泡", price: 15, stock: 1, image: "images/default.png", description: "檯燈有一個 USB 孔 可以給手機充電~<br>燈泡有 warm/cool white (cool white 是稀有物品)<br>原價6歐 還要找特別地方買...<br>依使用時數來看, 理論上很難燒掉" },
+    { name: "38. 可充電檯燈 + 兩種燈泡", price: 13, stock: 1, image: "images/default.png", description: "檯燈有一個 USB 孔 可以給手機充電~<br>燈泡有 warm/cool white (cool white 是稀有物品)<br>原價6歐 還要找特別地方買...<br>依使用時數來看, 理論上很難燒掉" },
     { name: "39. 吹風機", price: 4, stock: 1, image: "images/default.png", description: "" },
     { name: "40. 路由器 + 網路線", price: 16, stock: 1, image: "images/default.png", description: "附設定說明(我寫的呦)" },
     { name: "41. 延長線(無開關)", price: 2, stock: 2, image: "images/default.png", description: "3孔" },
@@ -81,6 +81,7 @@ let ITEMS = [
 // 　　(domain name 填 localhost 就好)
 // 3. 就會拿到 Form Access Key 了 -> 填到底下
 const myKey = "b5d75dd5-63b4-44df-b2b6-be85824c42dc";
+
 
 
 
